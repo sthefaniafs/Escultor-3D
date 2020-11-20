@@ -8,27 +8,27 @@
  */
 struct Voxel {
   /**
-   * @brief \b r armazena o valor correspondente a cor vermelha
+   * @brief armazena o valor correspondente a cor vermelha
    * 
    */
   float r;
   /**
-   * @brief \b g armazena o valor correspondente a cor verde
+   * @brief armazena o valor correspondente a cor verde
    * 
    */
   float g;
   /**
-   * @brief \b b armazena o valor correspondente a cor azul
+   * @brief armazena o valor correspondente a cor azul
    * 
    */
   float b;
   /**
-   * @brief \b a armazena o valor correspondente a transparência do desenho 
+   * @brief armazena o valor correspondente a transparência do desenho 
    * 
    */
   float a; 
   /**
-   * @brief \b isOn define se o voxel correspondente deve ser incluído no arquivo digital 
+   * @brief define se o voxel correspondente deve ser incluído no arquivo digital 
    * 
    */
   bool isOn;
