@@ -7,6 +7,7 @@
  * @brief A classe Sculptor serve para realizar esculturas em blocos tridimensionais representados por matrizes digitais
  *
  */
+
 using namespace std;
 
 class Sculptor {
