@@ -3,14 +3,38 @@
 #define SCULPTOR_HPP
 #include "voxel.hpp"
 
+/**
+ * @brief A classe Sculptor serve para realizar esculturas em blocos tridimensionais representados por matrizes digitais
+ *
+ */
 using namespace std;
 
 class Sculptor {
 protected:
-  Voxel ***v; // matriz de 3 dimensões do tipo voxel
-  int nx,ny,nz; // determina a dimensão da matriz
-  float r,g,b,a; // determina a cor da matriz
+/**
+ * @brief  Matriz de tridimensional do tipo voxel
+ * 
+ */
+  Voxel ***v;
+/**
+ * @brief Determina a dimensão da matriz
+ * 
+ */
+  int nx,ny,nz; 
+  /**
+   * @brief Determina a cor da matriz
+   * 
+   */
+  float r,g,b,a; 
 public:
+/**
+ * @brief Construct a new Sculptor object
+ * 
+ * @param _nx 
+ * @param _ny 
+ * @param _nz 
+ */
+
   Sculptor(int _nx, int _ny, int _nz); // construtor
   ~Sculptor(); //destrutor
   //funções membro
