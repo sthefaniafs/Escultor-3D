@@ -49,7 +49,7 @@ Sculptor::~Sculptor()
     nx=ny=nz=0;
     r=g=b=a=0;
 }
-//Função membro que atribui cor ao desenho
+
 void Sculptor::setColor(float r, float g, float b, float alpha)
 {
     this->r=r;
@@ -58,7 +58,6 @@ void Sculptor::setColor(float r, float g, float b, float alpha)
     a=alpha;
 }
 
-//Função membro que ativa o voxel na posição (x,y,z)e atribui a cor atual do desenho a ele
 void Sculptor::putVoxel(int x, int y, int z)
 {
     //Para ativar o voxel na posição (x,y,z) é feito isOn=true.
@@ -69,13 +68,13 @@ void Sculptor::putVoxel(int x, int y, int z)
     v[x][y][z].b=b;
     v[x][y][z].a=a;
 }
-//Função membro que desativa o voxel na posição (x,y,z)
+
 void Sculptor::cutVoxel(int x, int y, int z)
 {
     //Para desativar o voxel na posição (x,y,z) é feito isOn=false
     v[x][y][z].isOn=false;
 }
-//Função membro que ativa todos os voxels no intervalo [x0,x1], [y0,y1], [z0,z1] criando um cubo com a cor atual do desenho
+
 void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1)
 {
     /*Para isso, temos 3 estruturas de repetição que varrem do menor ao maior valor do intervalo. Na estrutura de repetição
@@ -91,7 +90,7 @@ void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1)
         }
     }
 }
-//Função membro que desativa todos os voxels no intervalo [x0,x1], [y0,y1], [z0,z1].
+
 void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1)
 {
     /*Para isso, temos 3 estruturas de repetição que varrem do menor ao maior valor do intervalo. Ao contrário do caso anterior,
@@ -108,7 +107,7 @@ void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1)
     }
 
 }
-// Função membro que ativa os voxels que satisfazem à equação da esfera e atribui a eles a cor atual do desenho
+
 void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius)
 {
     /*Para isso as variáveis auxiliares px, py e pz foram criadas. Elas são utilizadas dentro do laço de repetição e exercem o
@@ -135,7 +134,7 @@ void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius)
         }
     }
 }
-// Função membro que desativa os voxels que satisfazem à equação da esfera
+
 void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius)
 {
     /*Seguindo a mesma lógica do putSphere, a diferença entre as funções é que o cutSphere remove os voxels seguindo as
@@ -160,7 +159,7 @@ void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius)
         }
     }
 }
-//Ativa todos os voxels que satisfazem à equação do elipsóide e atribui a eles a cor atual de desenho
+
 void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
 {
     /*De forma semelhante ao putSphere, as variáveis auxiliares px, py e pz foram criadas. Elas são utilizadas dentro do laço de repetição e exercem o
@@ -186,7 +185,7 @@ void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
         }
     }
 }
-//Desativa todos os voxels que satisfazem à equação do elipsóide
+
 void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
 {
     /*Seguindo a mesma lógica do putEllipsoid, a diferença entre as funções é que o cutEllipsoid remove os voxels seguindo as
@@ -246,16 +245,10 @@ void Sculptor::writeOFF(char* filename)
     }
     //Início o preenchimento do arquivo filename
     fout << "OFF" << endl;
-    /*O número de voxels contabilizados é utilizado para determinar quantos vértices e faces há na escultura digital,
-    ao número de arestas é atribuído o valor 0*/
+    /*O número de voxels contabilizados é utilizado para determinar quantos vértices e faces há na escultura digital, ao número de arestas é atribuído o valor 0*/
     fout << 8*nv << " " << 6*nv << " 0" <<endl;
 
-    /*Laço de repetição criado para determinar as coordenadas que serão gravadas no arquivo off.
-    Como o desenho é feito em relação a um ponto na posição [0,0,0] e um voxel possuem lado=1.
-    Primeiramente será verificado se o voxel está ativado nas posições [i,j,k], se sim, a coordenada do desenho
-    será feita acrescendo ou descrecendo 0.5 de cada posição, isso se dá pois os voxels estarão centralizados no ponto [0,0,0]
-    assim, ficará metade do voxel em -0.5 e a outra em +0.5, seguindo esse raciocínio todas as possibilidades de coordenadas foram
-    feitas no for. */
+    /*Laço de repetição criado para determinar as coordenadas que serão gravadas no arquivo off. Como o desenho é feito em relação a um ponto na posição [0,0,0] e um voxel possuem lado=1. Primeiramente será verificado se o voxel está ativado nas posições [i,j,k], se sim, a coordenada do desenho será feita acrescendo ou descrecendo 0.5 de cada posição, isso se dá pois os voxels estarão centralizados no ponto [0,0,0] assim, ficará metade do voxel em -0.5 e a outra em +0.5, seguindo esse raciocínio todas as possibilidades de coordenadas foram feitas no for. */
     for(int i=0; i<nx; i++)
     {
         for(int j=0; j<ny; j++)
@@ -285,11 +278,9 @@ void Sculptor::writeOFF(char* filename)
         }
     }
     /*Após determinar as coordenadas será definido como as faces do voxel serão desenhadas. Primeiramente, O número 4 está
-    fixado pois representa o número de vértices que é imutável. Depois dele, seguindo a regra da mão direita a sequência de
+    fixado pois representa o número de vértices que é imutável. Depois dele, seguindo a regra da mão direita, a sequência de
     vértices que formará as faces estão representadas no laço de repetição através das variáveis auxiliares. Elas irão, de
-    acordo com seu índice, na linha do arquivo off coletar a coordenada em que o voxel deverá ser desenhado.  Ao lado disso, estão as
-    as cores que deverão ser atribuídas a esse voxel.
-    Dessa forma será possível desenhar qualquer uma das figuras das funções membro*/
+    acordo com seu índice, na linha do arquivo off coletar a coordenada em que o voxel deverá ser desenhado.  Ao lado disso, estão as as cores que deverão ser atribuídas a esse voxel. Dessa forma será possível desenhar qualquer uma das figuras das funções membro*/
     for(int i=0; i<nx; i++)
     {
         for(int j=0; j<ny; j++)
