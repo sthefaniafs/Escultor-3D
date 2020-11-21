@@ -5,4 +5,3 @@
 1. Alysson Ferreira da Silva
 2. Sthefania Fernandes Silva
 
-Link da documentação realizada do Doxygen:
