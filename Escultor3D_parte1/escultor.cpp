@@ -61,18 +61,23 @@ void Sculptor::setColor(float r, float g, float b, float alpha)
 void Sculptor::putVoxel(int x, int y, int z)
 {
     //Para ativar o voxel na posição (x,y,z) é feito isOn=true.
-    v[x][y][z].isOn=true;
-    //Para definir as cores a matriz de voxels é atribuido à posição (x,y,z) a cor escolhida através da função membro setColor
-    v[x][y][z].r=r;
-    v[x][y][z].g=g;
-    v[x][y][z].b=b;
-    v[x][y][z].a=a;
+     if (x>=0 && x<nx && y>=0 && y<ny && z>=0 && z<nz)
+    {
+        v[x][y][z].isOn=true;
+        v[x][y][z].r=r;
+        v[x][y][z].g=g;
+        v[x][y][z].b=b;
+        v[x][y][z].a=a;
+    }
 }
 
 void Sculptor::cutVoxel(int x, int y, int z)
 {
-    //Para desativar o voxel na posição (x,y,z) é feito isOn=false
-    v[x][y][z].isOn=false;
+    //Para desativar o voxel na posição (x,y,z) é feito isOn=false.
+     if (x>=0 && x<nx && y>=0 && y<ny && z>=0 && z<nz)
+    {
+        v[x][y][z].isOn=false;
+    }
 }
 
 void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1)
