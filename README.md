@@ -1,4 +1,4 @@
-# Escultor-3D
+# Escultor 3D
 Projeto de Programação Avançada dividido em 3 partes
 
 - Integrantes:
