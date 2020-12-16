@@ -32,8 +32,8 @@ int main()
         figs[i]->draw(*s2);
     }
 
-    s2->limpaVoxels();
     s2->writeOFF((char*)"C:/Users/sthef/Documents/Programação Avançada/Escultor3D_parte2/desenho.off");
+    s2->limpaVoxels();
     
     for (int i=0; i<figs.size(); i++)
     {
