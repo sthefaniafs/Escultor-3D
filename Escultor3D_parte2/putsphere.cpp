@@ -18,18 +18,18 @@ void PutSphere::draw(Sculptor &s)
     s.setColor(r,g,b,a);
     int px,py,pz;
     px=py=pz=0;
-    for(int i=0; i<(2*x0); i++)
+    for(int i=x0-raio; i<(x0+raio); i++)
     {
-        for(int j=0; j<(2*y0); j++)
+        for(int j=y0-raio; j<(y0+raio); j++)
         {
-            for(int k=0; k<(2*z0); k++)
+            for(int k=z0-raio; k<(z0+raio); k++)
             {
                 px=i-x0;
                 py=j-y0;
                 pz=k-z0;
                 if(pow(px,2)+pow(py,2)+pow(pz,2)<=pow(raio,2))
                     {
-                        if(i<(2*x0) && j<(2*y0) && k<(2*z0) && i>0 && j>0 && k>0)
+                        if(i<(x0+raio) && j<(y0+raio)&& k<(z0+raio) && i>0 && j>0 && k>0)
                             s.putVoxel(i,j,k);
                     }
             }
