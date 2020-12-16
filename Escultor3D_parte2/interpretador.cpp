@@ -17,22 +17,22 @@ using namespace std;
 vector <FiguraGeometrica*> Interpretador:: parse (string filename)
 {
     vector <FiguraGeometrica*> figs;
-    ifstream fin;
+    ifstream arquivo;
     stringstream ss;
     string s, token;
 
-    fin.open(filename.c_str());
+    arquivo.open(filename.c_str());
 
-    if (!fin.is_open())
+    if (!arquivo.is_open())
     {
         cout << "nao abriu " << filename;
         exit(0);
     }
 
-    while(fin.good())
+    while(arquivo.good())
     {
         getline(fin,s);
-        if(fin.good())
+        if(arquivo.good())
         {
             ss.clear();
             ss.str(s);
@@ -97,6 +97,11 @@ vector <FiguraGeometrica*> Interpretador:: parse (string filename)
                     ss >> x0 >> y0 >> z0 >> raiox >> raioy >> raioz;
                     figs.push_back(new CutEllipsoid(x0,y0,z0,raiox,raioy,raioz));
                 }
+                else
+                {
+                    cout << "Comando inexistente no programa\n"; 
+                }
+                
 
             }
         }
